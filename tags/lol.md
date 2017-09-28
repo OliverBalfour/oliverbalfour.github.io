@@ -1,6 +1,12 @@
 ---
 layout: tag
-title: "Tag: lol"
-tag: lol
+title: Posts tagged lol
 permalink: /tags/lol/
+tag: lol
+---
+---
+layout: tag
+title: Posts tagged lol
+permalink: /tags/lol/
+tag: lol
 ---

@@ -36,10 +36,14 @@ for fname in old:
 for tag in tags:
     tag_fname = tags_dir + tag + '.md' # this is why tags must be lowercase and use dashes instead of spaces (ie `cool-tag`)
     buffer = open(tag_fname, 'a')
-    buffer.write('---'
-                 'layout: tag'
-                 'title: Posts tagged ' + tag
-                 '---')
+    buffer.write(
+        '---\n' +
+        'layout: tag\n' +
+        'title: Posts tagged ' + tag + '\n' +
+        'permalink: /tags/' + tag + '/\n' +
+        'tag: ' + tag + '\n' +
+        '---\n'
+    )
     buffer.close()
 
 print("Finished generating " + str(len(tags)) + " tag pages")

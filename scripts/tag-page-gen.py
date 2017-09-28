@@ -4,6 +4,7 @@ import os, glob
 tags_dir = 'tags/'
 tags = []
 
+# generate list of tags
 for name in glob.glob('_posts/*.md'):
     buffer = open(name, 'r')
     search = False
@@ -11,10 +12,10 @@ for name in glob.glob('_posts/*.md'):
     for line in buffer:
         # check if current line declares tags
         if search:
-            current_tags = line.strip().split(' ')
-            if current_tags[0] == 'tags:':
+            parts = line.strip().split(' ')
+            if parts[0] == 'tags:' and parts[1] and parts[1] != '""':
                 # found tags
-                tags += current_tags[1:]
+                tags += parts[1:]
                 search = False
                 break
         # YAML Front Matter fence detection
@@ -29,13 +30,16 @@ for name in glob.glob('_posts/*.md'):
 
     buffer.close()
 
+# clear out /tags directory for fresh rebuild
 old = glob.glob(tags_dir + '*.md')
 for fname in old:
     os.remove(fname)
 
+# repopulate /tags
+# note: tags may contain dupes, doesn't matter except for speed though
 for tag in tags:
     tag_fname = tags_dir + tag + '.md' # this is why tags must be lowercase and use dashes instead of spaces (ie `cool-tag`)
-    buffer = open(tag_fname, 'a')
+    buffer = open(tag_fname, 'w')
     buffer.write(
         '---\n' +
         'layout: tag\n' +

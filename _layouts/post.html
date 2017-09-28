@@ -22,7 +22,7 @@ layout: default
   <span>
     Tags:&nbsp;
     {% for tag in page.tags %}
-      <a href="/tags/{{ tag }}"><span class='tag' style='white-space: nowrap'>{{ tag }}</span>&nbsp;</a>
+      <a href="{{ "/tags/" | relative_url }}{{ tag }}"><code class='tag' style='white-space: nowrap'>{{ tag }}</code></a>
     {% endfor %}
   </span>
 

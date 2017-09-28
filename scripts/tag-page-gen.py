@@ -30,13 +30,15 @@ for name in glob.glob('_posts/*.md'):
 
     buffer.close()
 
+# remove dupes
+tags = list(set(tags))
+
 # clear out /tags directory for fresh rebuild
 old = glob.glob(tags_dir + '*.md')
 for fname in old:
     os.remove(fname)
 
 # repopulate /tags
-# note: tags may contain dupes, doesn't matter except for speed though
 for tag in tags:
     tag_fname = tags_dir + tag + '.md' # this is why tags must be lowercase and use dashes instead of spaces (ie `cool-tag`)
     buffer = open(tag_fname, 'w')

@@ -1,0 +1,6 @@
+metaballs
+other cool nodejs things
+roguelike
+jekyll + gh pages
+observer design pattern
+game dev blog

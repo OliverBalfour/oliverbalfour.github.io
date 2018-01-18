@@ -147,7 +147,7 @@ vy = Math.sin(angle) * speed;
 
 A good value for friction would be 0.01, the number I use in the simulation below. If you're going to use the proper method for friction, I'd suggest wrapping it in a function for ease of access. It is rather lengthy, especially compared to the cheat version of friction, which is mathematically incorrect but looks ok. The updated spaceship simulation looks like this:
 
-[[[pen qZRmpx]]]
+{% include codepen-embed.html slug="qZRmpx" %}
 
 See how much better and realistic it is?
 
@@ -167,7 +167,7 @@ var friction = 0.95;
 
 Yes, it's that simple. And it's very hard to tell the difference between that and the proper implementation. Only it can't be used in high precision and accuracy requiring projects, just crappy games.
 
-[[[pen jqympW]]]
+{% include codepen-embed.html slug="jqympW" %}
 
 The difference isn't exactly noticeable, excluding the fact that the strength of the friction differs slightly due to the value chosen.
 

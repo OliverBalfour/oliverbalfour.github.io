@@ -3,6 +3,7 @@ layout: post
 title: "Building a Simple Chat Room with PHP"
 tags: php
 categories: archive
+edited: 2018-1-19
 ---
 
 [PHP is awful.](https://eev.ee/blog/2012/04/09/php-a-fractal-of-bad-design/) If you're learning it by choice, don't. Use something else, like node.js, Ruby on Rails, Python Django, or anything really. However, there are environments where PHP is the only option and I respect that. For a beginning programmer, free PHP hosts are often the easiest way to get things online. This tutorial shows how to make a very simple chat room in which you need to refresh the page to update the chat. Whilst I may cover automatic updating using server pinging in a future tutorial, that requires JavaScript which is out of the scope of this tutorial.
@@ -165,6 +166,9 @@ Now we're done with the core functionality of the chat room. You should be able 
 
  - Automatically load messages from the server as they are posted. There are two ways of doing this: server pinging and WebSockets. WebSockets are, to my knowledge, not easy to work with in PHP, but server pinging is as easy as using a JavaScript `setInterval` timer to periodically request a page, `ping.php`, which returns any newly posted messages.
  - Change the message sending form to ping the server using an `XMLHttpRequest` instead of reloading the page.
+ - Add better CSS. I've written some below, but it's still very basic.
+ - Add a login system, or at least prevent duplicate or null/empty usernames.
+ - Character limits and rate limiting to avoid spamming. Rate limiting can be achieved by comparing the timestamps of a pending message and the last message and discarding the message if the difference in time is too close. To do this, you'll need to associate timestamp data with messages. (This would also make server pinging easier as the server script would be able to accept the timestamp of the last seen message to continue from.)
 
 Now, we're done with the core functionality of the chat room, but it looks awful. We'll add some CSS to the final product. Here's some CSS, feel free to use this as a starting point. I'm not a designer though, so don't expect anything amazing.
 

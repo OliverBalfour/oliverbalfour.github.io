@@ -1,5 +1,6 @@
 
 implement comments
+finish editing older posts
 
 javascript canvas
 	metaballs

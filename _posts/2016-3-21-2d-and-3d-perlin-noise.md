@@ -1,11 +1,11 @@
 ---
 layout: post
 title: "Procedural Content Generation (PCG) Part 2 - 2 and 3 Dimensional Perlin Noise"
-categories: canvas
-tags: canvas javascript physics
+categories: pcg
+tags: canvas javascript pcg
 ---
 
-Welcome back! If you haven't read my previous post on 1D Perlin Noise, I'd recommend looking at that to get an understanding of how it works. It's NOT over [here](# ).
+Welcome back! If you haven't read my previous post on 1D Perlin Noise, I'd recommend looking at that to get an understanding of how it works. It's over [here](/pcg/2016/03/19/1d-perlin-noise.html).
 
 ## The code
 2D & 3D Perlin Noise is considerably more complicated than 1D, so from here on in, we'll be using the same block of code to do everything, a port of Ken Perlin's original Java program for Improved Noise. Here it is:

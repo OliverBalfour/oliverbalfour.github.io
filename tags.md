@@ -3,38 +3,5 @@ layout: page
 title: Tags
 permalink: /tags/
 ---
-{% capture temptags %}
-  {% for tag in site.tags %}
-    {{ tag[0] }}#{{ tag[1].size }}
-  {% endfor %}
-{% endcapture %}
-{% assign sortedtemptags = temptags | split:' ' | sort | reverse %}
 
-<div class='tag-container'>
-{% for temptag in sortedtemptags %}
-  {% assign tagitems = temptag | split: '#' %}
-  {% assign name = tagitems[0] %}
-  {% assign count = tagitems[1] %}
-  <div><a href='{{ "/tags/" | relative_url }}{{ name }}' class='tag'><code>{{ name }}</code> [<span class='tag-count'>{{ count }}</span>]</a></div>
-{% endfor %}
-</div>
-
-<script>
-{% comment %}
-liquid won't let me sort tags by their number of posts, so I have to use JS to reorder DOM elements :/
-{% endcomment %}
-// es5 :(
-Array.prototype.slice.call(document.getElementsByClassName('tag-container')).forEach(function(container){
-  var unsorted = [];
-  Array.prototype.slice.call(container.children).forEach(function(tag){
-    unsorted.push({c: parseInt(tag.getElementsByClassName('tag-count')[0].innerText), e: tag});
-	container.removeChild(tag);
-  });
-  var sorted = unsorted.sort(function(a, b){
-    return b.c - a.c
-  }).map(function(a){ return a.e });
-  sorted.forEach(function(child, i) {
-	  container.appendChild(child);
-  });
-});
-</script>
+{% include all-tags.html %}

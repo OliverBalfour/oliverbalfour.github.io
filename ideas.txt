@@ -1,6 +1,24 @@
-metaballs
-other cool nodejs things
-roguelike
-jekyll + gh pages
-observer design pattern
-game dev blog
+
+implement comments
+
+javascript canvas
+	metaballs
+	graphical roguelike
+nodejs websockets
+	realtime game
+nodejs expressjs
+	simple http server
+	login system
+jekyll
+	how to make a simple blog with jekyll and github pages
+	how to implement tags in your jekyll/gh pages blog
+c++
+	game dev blog
+	observer design pattern
+	text based roguelike
+	using sdl and 2D hardware accelerated drawing API to make 2D games
+pcg
+	update 2D perlin noise
+	maze generation algorithms
+physics
+	bounding box and circle collision detection

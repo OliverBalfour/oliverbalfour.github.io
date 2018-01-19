@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Procedural Content Generation (PCG) Part 1 - 1 Dimensional Perlin Noise"
-categories: canvas
+categories: pcg
 tags: canvas javascript pcg
 ---
 

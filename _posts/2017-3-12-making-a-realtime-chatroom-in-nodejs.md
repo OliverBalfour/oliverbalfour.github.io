@@ -2,7 +2,7 @@
 layout: post
 title: "Making a Realtime Chat Room in Node.js"
 categories: canvas
-tags: nodejs websockets
+tags: nodejs websockets expressjs
 ---
 
 Obviously, you'll need Node.js for this (https://nodejs.org) which as of writing this post the latest version is v7.4.0 and the latest stable version is v6.9.4.
@@ -19,7 +19,7 @@ We'll create a brand new node application in a new folder and initialise it with
 }
 ```
 
-Then we install a few dependencies; the ones we need for now are express (web framework) and socket.io (powerful WebSocket client)
+Then we install a few dependencies; the ones we need for now are express (simple http server with programmable routing) and socket.io (powerful WebSockets server and client)
 
 `npm install --save express`
 `npm install --save socket.io`

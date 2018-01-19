@@ -1,24 +1,10 @@
-{% if page.comments != false and jekyll.environment == "production" %}
-  Comments.
-  <!--
-  <div id="disqus_thread"></div>
-  <script>
-    var disqus_config = function () {
-      this.page.url = '{{ page.url | absolute_url }}';
-      this.page.identifier = '{{ page.url | absolute_url }}';
-    };
-
-    (function() {
-      var d = document, s = d.createElement('script');
-
-      s.src = 'https://{{ site.disqus.shortname }}.disqus.com/embed.js';
-
-      s.setAttribute('data-timestamp', +new Date());
-      (d.head || d.body).appendChild(s);
-    })();
-  </script>
-  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
-  -->
+{% if page.comments != false %}
+	<div class='comments'>
+		<h2>Comments</h2>
+		<p>TODO: Add comments functionality</p>
+	</div>
 {% else %}
-  No comments, sorry!
+	<div class='comments no-comments'>
+		<h2>Comments disabled</h2>
+	</div>
 {% endif %}

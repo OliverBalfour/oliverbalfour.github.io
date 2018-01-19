@@ -44,7 +44,7 @@ while(x < w){
 
 Remember when setting the fill style to make sure the r, g and b values are all whole numbers!
 
-[[[pen oxYzde]]]
+{% include codepen-embed.html slug="oxYzde"%}
 
 You can easily make our linear gradient work like a normal one. However, that's for you to do, and only if you want to. But before you go and make something like a traditional `createLinearGradient`, we'll be making that gradient with cosine interpolation you were promised!
 
@@ -61,7 +61,7 @@ function interpolate(a, b, px){
 
 If you use it as a replacement for the linear interpolation function, you get this result:
 
-[[[pen zqoNrm]]]
+{% include codepen-embed.html slug="zqoNrm"%}
 
 There isn't much difference, but if you compare it closely with the last one, you'll find it eases in and out, whereas linear interpolation is, well, linear and ugly. But, truth be told, it's still ugly. There is a reason behind this, based on the way computers render colors. To get rid of the weird brown line in the middle of the gradient, you need to square the rgb values of the start and end colors, and get the square root of the colour values after operating on them. To see why, take a look at this video: https://youtu.be/LKnqECcg6Gw
 
@@ -89,7 +89,7 @@ currentColour.g = Math.floor(Math.sqrt(startColour.g * (1 - percent) + endColour
 currentColour.b = Math.floor(Math.sqrt(startColour.b * (1 - percent) + endColour.b * percent));
 ```
 
-[[[pen WwpoBv]]]
+{% include codepen-embed.html slug="WwpoBv"%}
 
 ## Making a radial gradient
 This is much more complicated in terms of maths, but is still relatively easy to implement. We can also (sort of) cheat. By simply reversing the while loop so it runs backwards, we can effectively use the `arc` function to draw each layer. If you feel that this is too cheaty, by all means use trigonometry to do it instead. The advantage of that is that you can make oval shaped gradients as well, and it looks sharper. (Though, once again, you could cheat using the `scale` function.) Anyway, cheating or not, here is our code for it:
@@ -115,12 +115,14 @@ while(x > 0){
 
 Combine that with the beginning of the linear gradient's code (the start and end colour variables, the canvas setup etc.) you have a fully functioning radial gradient maker!
 
-[[[pen aNBBKG]]]
+{% include codepen-embed.html slug="aNBBKG"%}
 
 But, that's no fun. Cheating is so boring. Let's make a radial gradient using trig, just because it was pi day on the 14th. The way we do it is, instead of drawing a circle with the `arc` function, we loop an amount of iterations equal to the circumference of the circle at the current radius. (Equal to `radius * Math.PI * 2`.) Then, we calculate the angle that we're up to, which is a fraction of `Math.PI * 2`. Lastly we draw a small dot at the position we're up to. Seeing as we only have the angle and radius, we need trig. So, `x = Math.cos(angle) * radius` and `y = Math.sin(angle) * radius`.
 
-[[[pen pyNNZe]]]
+{% include codepen-embed.html slug="pyNNZe"%}
 
 Looks all right, huh? Similar to the previous example, just without the cheating! Not that it really is cheating, though. The previous example is certainly faster. Not as fast as a generic radial gradient made with CSS or the canvas's context, but good all the same. Anyway, that brings us to the end of making radial gradients programmatically.
 
 Thanks for reading. See you next time!
+
+*This post was originally posted on my CodePen blog [here.](https://codepen.io/Tobsta/post/programmatically-making-gradients)*

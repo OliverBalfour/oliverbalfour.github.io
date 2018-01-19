@@ -107,7 +107,7 @@ document.addEventListener('keyup', function(e){
 
 There we have it. A basic spaceship simulation controlled by arrow keys. The only problem with it, though, is that there is no friction, so the spaceship will just drift endlessly when left untouched.
 
-[[[pen ONWmRd]]]
+{% include codepen-embed.html slug="ONWmRd"%}
 
 There we have it. It works, but we need to have friction or else it's nearly unusable.
 
@@ -173,3 +173,5 @@ The difference isn't exactly noticeable, excluding the fact that the strength of
 
 ## Wrapping up
 There you are. You now have three new tools under your belt. Hopefully you'll actually remember all of that. Anyway, thanks for reading, and if you liked that, there's plenty more where it came from. See you next time!
+
+*This post was originally posted on my CodePen blog [here.](https://codepen.io/Tobsta/post/implementing-velocity-acceleration-and-friction-on-a-canvas)*

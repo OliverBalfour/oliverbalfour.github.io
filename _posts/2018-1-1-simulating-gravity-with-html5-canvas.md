@@ -17,13 +17,15 @@ Now that we have a good understanding of what gravity is, we can attempt to impl
 
 We'll have a particle simulation, so we'll be able to see the effect of gravity on each particle.
 
-[[[pen XdNOgg]]]
+{% include codepen-embed.html slug="XdNOgg"%}
 
 However, you'll notice that balls of different mass don't react differently. This is a problem that can't be fixed without really hacky code. Because of strange physics trickery, objects of different masses and shapes fall at exactly the same speed without air resistance (thanks Einstein) and so even if we weren't doing gravity the hacky way it'd still have to use either spot on physics which would be even more fruitless than it already was (if that's even possible...) and it'd be slow as hell, and in the end if you're making a platformer (just an example) then people would prefer it to run at more than 10 FPS over having spot on pixel perfect physics simulations eating up their system resources.
 
 The way I hack in realistic gravity is giving each object a mass and multiplying the gravity constant by the mass to get acceleration. You may have to change your gravity constant to a lower value as masses get higher, and none of the measurements are done in actual units really, it's just whatever looks good, but it works. And the users of whatever you're making will be happy. Unless it's a professional grade space simulator that expects calculations to be accurate to the millionth decimal point. Then you're stuffed.
 
 The original particle simulator with more realistic gravity. Feel free to play around with it.
-[[[pen pyREMz]]]
+{% include codepen-embed.html slug="pyREMz"%}
 
 If you want another post about the 'proper' way to do gravity let me know below. Until then, I hope you've enjoyed this.
+
+*This post was originally posted on my CodePen blog [here.](https://codepen.io/Tobsta/post/implementation-of-gravity-on-a-canvas)*

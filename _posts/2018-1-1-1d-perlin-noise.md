@@ -13,7 +13,7 @@ It is used widely for all sorts of things, from creating simple linear graphs of
 ## Perlin Noise
 Perlin Noise originated in the 80's when a guy named Ken Perlin decided he was sick of the computery look graphics had. He created a basic program that allowed him to generate nice looking (pseudo) random textures, like the one below:
 
-[[[pen PNNgZV]]]
+{% include codepen-embed.html slug="PNNgZV"%}
 
 There are a few differences, though, as that that version uses a later version of his noise ported to JS and it is also animated. However, that's not the point; the point is that Perlin Noise is absolutely amazing, as you will see later.
 
@@ -22,7 +22,7 @@ In this post we will look at 1D Perlin Noise.
 ## 1D Perlin Noise
 To begin with, I'll explain what Perlin Noise consists of. There are two parts for a basic 1D implementation. A psuedo-random number generator (PRNG), and an interpolation function. Put together with some canvas magic, it looks like this:
 
-[[[pen QNyKEE]]]
+{% include codepen-embed.html slug="QNyKEE"%}
 
 Cool, huh? Don't fret if this seems to complicated; you don't have to fully understand every tenet of this. As long as you're able to plug Perlin Noise into a program by the end of the next post, you're good.
 
@@ -106,7 +106,7 @@ That plots the line along the x axis on a canvas, using the variable `ctx` as it
 
 ### Octaves
 
-[[[pen JXbGxy]]]
+{% include codepen-embed.html slug="JXbGxy"%}
 
 As you can see in that example, you can make lines that are very bumpy. The way we do this is by adding new octaves. Essentially what this means is that you get some Perlin Noise. Then, you divide the amplitude and wavelength by a divisor of your choice (2 is probably the best option), and then we make *another* lot of Perlin Noise. That second line is another octave. You should probably make enough octaves in your lines as can be seen on your canvas (so until your Perlin Noise values are less than one). With an amplitude and wavelength of 128 we can have about 8 octaves before the values become indistinguishable/unnoticeable.
 
@@ -146,3 +146,5 @@ DrawLine(CombineNoise(GenerateNoise(128, 128, 8, 2, window.innerWidth)));
 
 ## You're ready to go!
 With that simple trick under your toolbelt you can make procedurally generated landscapes similar to those in Terraria (But much simpler). You can make plenty of stuff with 1D noise alone. With that, thanks for reading and stay tuned for the next post, about 2D Perlin Noise. We will get into using it to make procedurally generated textures and basic terrain.
+
+*This post was originally posted on my CodePen blog [here.](https://codepen.io/Tobsta/post/procedural-generation-part-1-1d-perlin-noise)*

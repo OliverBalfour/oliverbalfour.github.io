@@ -23,6 +23,7 @@ We'll create a brand new node application in a new folder and initialise it with
 Then we install a few dependencies; the ones we need for now are express (simple http server with programmable routing) and socket.io (powerful WebSockets server and client)
 
 `npm install --save express`
+
 `npm install --save socket.io`
 
 ## Hello World
@@ -172,7 +173,7 @@ io.on('connection', (socket) => {
 
 So we now have a new event, `loggedin`, being sent to every user other than the logged in user (they are notified by the acknowledgement.) Now that we have that, we can build the chat room itself and listen in on the `loggedin` event on the client. We also have code to emit an event, `loggedout`, when a user disconnects. We'll listen in on that as well soon.
 
-## Building the chat room itself
+## Building the client
 
 First we'll build the HTML structure of the chat room. It'll be relatively simple to start off with, and you'll have to write your own CSS. We will need one CSS class though, `.hidden`, which'll do as the name implies.
 
@@ -326,6 +327,8 @@ Here is the full client code:
 	socket.on('chatmessage', addMessage);
 </script>
 ```
+
+## Handling messages on the server
 
 Now all that's left is finishing off the server. We just need to handle the `chatmessage` event and broadcast the message to all clients other than the sender and the rest will tie in together perfectly. Put the following code right between the `login` event handler and the `disconnect` event handler in `index.js`.
 

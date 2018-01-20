@@ -5,21 +5,23 @@ categories: canvas
 tags: canvas javascript
 ---
 
-In this post we will make gradients without using any of the functions built into the canvas's context for making them. In other words, we'll learn how to make a gradient without using `createLinearGradient` or `createRadialGradient`. Why? Simple. You can do much more with these gradients, as you can interpolate between colours in any way you like, like using cosine interpolation rather than linear for a linear gradient. Also, if you understand how it works, you will better understand how to make metaballs. (I'll probably write a post on them soon, they're really cool.)
+In this post we will make gradients without using any of the helper functions built into the canvas context for making them. In other words, we'll make a gradient without using `createLinearGradient` or `createRadialGradient`. Whilst those two functions are satisfactory for most applications, you can do much more with these gradients, as you can interpolate between colours in any way you like. For example, uou can use cosine interpolation rather than linear for a smoother, eased gradient. Also, if you understand how to perform colour interpolation, you will better understand how to make metaballs and similar graphical effects. (I'll probably write a post on them soon, they're really cool.)
 
 ## Making a linear gradient
-To make our gradient, we need to have two colours: the start and end colours. We'll have them in an object format, with r, g and b properties.
+To make our gradient, we need to have two colours: the start and end colours. We'll have them in an object format, with `r`, `g` and `b` properties.
 
 ```js
-var startColour = {r: 0, g: 255, b: 50},
-	endColour = {r: 255, g: 0, b: 100};
+var startColour = {r: 0, g: 255, b: 50}, // green
+	endColour = {r: 255, g: 0, b: 100}; // pink
 ```
 
-Then, we simply need to go across the screen, drawing values from an interpolation function. Here is that function, a simple linear interpolation (lerp) function:
+Then, we simply need to go across the screen, drawing values from an interpolation function. For now, we will use a simple linear interpolation (LERP) function. All it does is, given the decimal `p`, get the number between `a` and `b` that falls along a straight line between `a` and `b` on a graph. So, if you were to plot the values of the function from `p = 0.0` to `p = 1.0` on a graph, you would get a straight line going from `a` to `b`. Instead, though, we will use the value for each of the three colour values (or four, if you wanted a fading gradient) from the start and end colours (as `a` and `b`,) and plot the interpolated values as the red, green and blue components of the gradient. We will do this for every column of pixels along the gradient.
 
 ```js
-function interpolate(a, b, x){
-	return a * (1 - x) + b * x;
+function interpolate (a, b, p) {
+	// The higher p is, the less a is weighted and the more b is weighted in the result
+	// The inverse is also true
+	return a * (1 - p) + b * p;
 }
 ```
 
@@ -27,14 +29,16 @@ It's that easy. Then, we just pass each element of the colour into that function
 
 ```js
 var currentColour = {r: startColour.r, g: startColour.g, b: startColour.b},
-	x = 0,
-	percent = 0;
-while(x < w){
+	x = 0, // x position along the canvas
+	percent = 0; // p
+
+while (x < w) { // w is the width of the canvas in pixels
 	percent = x / w;
 
-	currentColour.r = Math.floor(startColour.r * (1 - percent) + endColour.r * percent);
-	currentColour.g = Math.floor(startColour.g * (1 - percent) + endColour.g * percent);
-	currentColour.b = Math.floor(startColour.b * (1 - percent) + endColour.b * percent);
+	// Notice we aren't actually calling the function here, although we are still using the same algorithm
+	currentColour.r = Math.round(startColour.r * (1 - percent) + endColour.r * percent);
+	currentColour.g = Math.round(startColour.g * (1 - percent) + endColour.g * percent);
+	currentColour.b = Math.round(startColour.b * (1 - percent) + endColour.b * percent);
 
 	ctx.fillStyle = 'rgb('+currentColour.r+', '+currentColour.g+', '+currentColour.b+')';
 	ctx.fillRect(x, 0, 1, h);
@@ -42,11 +46,11 @@ while(x < w){
 }
 ```
 
-Remember when setting the fill style to make sure the r, g and b values are all whole numbers!
+Remember when setting the fill style to make sure the `r`, `g` and `b` values are all whole numbers using `Math.round`!
 
 {% include codepen-embed.html slug="oxYzde"%}
 
-You can easily make our linear gradient work like a normal one. However, that's for you to do, and only if you want to. But before you go and make something like a traditional `createLinearGradient`, we'll be making that gradient with cosine interpolation you were promised!
+You can easily make a function that interfaces like `createLinearGradient` using the above code as a starting point. However, that's out of the scope of this tutorial. But first, we will adapt our above code to use cosine interpolation instead of linear interpolation.
 
 ### Cosine interpolation
 The code for cosine interpolation looks like this:
@@ -59,7 +63,7 @@ function interpolate(a, b, px){
 }
 ```
 
-If you use it as a replacement for the linear interpolation function, you get this result:
+I won't go into the math, but If you use it as a replacement for the linear interpolation function, you get this result:
 
 {% include codepen-embed.html slug="zqoNrm"%}
 

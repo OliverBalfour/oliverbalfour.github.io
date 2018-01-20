@@ -33,6 +33,8 @@ The way this chat room will work is as follows:
 3. When they have a username, they will see a log of all previous chat messages, and at the bottom, a form that allows them to send a message.
 4. The page will refresh upon sending their message and the user will see their message (along with any other messages posted since they last refreshed the page), as well as all previous messages.
 
+## Username selection
+
 The 'login' form is simple; if the GET parameter `username` isn't set it asks for one, otherwise it shows the chat. Of course, it's not an account based login system, however feel free to implement one when you are done.
 
 ```php
@@ -58,7 +60,11 @@ if (!isset($_GET['username'])) {
 ?>
 ```
 
-In the above code we called `htmlspecialchars` on the username string. This is because of XSS (cross-site scripting), a security vulnerability that occurs in webpages. If we set our username to `<script>alert("I'm a 1337 HAX0R")</script>` without escaping the HTML characters (`<`, `>`), then that malicious code would execute every time that user sent a message and had their username added to the page. A general rule is to never trust user data; always sanitise it first. Now, with that set up we can program the chat page. In the last snippet, before the 'Rest of chat room' comment, we defined a variable called `$username`, which will be used throughout the rest of the chat room. In our message sending form, we will need to add a hidden input field that contains the username to avoid having to log in again every time you send a message and trigger a page refresh.
+In the above code we called `htmlspecialchars` on the username string. This is because of XSS (cross-site scripting), a security vulnerability that occurs in webpages. If we set our username to `<script>alert("I'm a 1337 HAX0R")</script>` without escaping the HTML characters (`<`, `>`), then that malicious code would execute every time that user sent a message and had their username added to the page. A general rule is to never trust user data; always sanitise it first.
+
+## Writing the chat page
+
+Now, with that set up we can program the chat page. In the last snippet, before the 'Rest of chat room' comment, we defined a variable called `$username`, which will be used throughout the rest of the chat room. In our message sending form, we will need to add a hidden input field that contains the username to avoid having to log in again every time you send a message and trigger a page refresh.
 
 ```php
 <?php
@@ -161,6 +167,8 @@ Here's the code so far:
 	</body>
 </html>
 ```
+
+## Improving the chat room
 
 Now we're done with the core functionality of the chat room. You should be able to test it out with multiple people over a network, however the experience isn't great. Here are some ideas for improvement:
 

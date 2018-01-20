@@ -3,6 +3,7 @@ layout: post
 title: "Programmatically Making Gradients"
 categories: canvas
 tags: canvas javascript
+edited: 2018-1-20
 ---
 
 In this post we will make gradients without using any of the helper functions built into the canvas context for making them. In other words, we'll make a gradient without using `createLinearGradient` or `createRadialGradient`. Whilst those two functions are satisfactory for most applications, you can do much more with these gradients, as you can interpolate between colours in any way you like. For example, you can use cosine interpolation rather than linear for a smoother, eased gradient. Also, if you understand how to perform colour interpolation, you will better understand how to make metaballs and similar graphical effects. (I'll probably write a post on them soon, they're really cool.)

@@ -1,11 +1,12 @@
 ---
 layout: post
 title: "Making a Realtime Chat Room in Node.js"
-categories: canvas
+categories: nodejs
 tags: nodejs websockets expressjs javascript
+edited: 2018-1-21
 ---
 
-Obviously, you'll need Node.js for this (https://nodejs.org) which as of writing this post the latest version is v7.4.0 and the latest stable version is v6.9.4.
+Obviously, you'll need Node.js for this (https://nodejs.org.) As of January 2018 the latest version is v9.4.0 and the long term support version (LTS) is v8.9.4.
 
 ## Getting started
 
@@ -22,6 +23,7 @@ We'll create a brand new node application in a new folder and initialise it with
 Then we install a few dependencies; the ones we need for now are express (simple http server with programmable routing) and socket.io (powerful WebSockets server and client)
 
 `npm install --save express`
+
 `npm install --save socket.io`
 
 ## Hello World
@@ -29,10 +31,11 @@ Then we install a few dependencies; the ones we need for now are express (simple
 Now we are able to start writing our chat app. In a new file, `index.js`, we'll place all of our server side code. Below is a Hello World express application. It does very little for now; simply sending the HTML file `index.html` to any requests to the root of the server (http://localhost:3000/)
 
 ```js
-const express = require('express')();
-const http = require('http').Server(express);
+const express = require('express')(); // load expressjs
+const http = require('http').Server(express); // create a http server using express
 const path = require('path');
 
+// Requests to the root of the server will return `index.html`
 express.get('/', (req, res) => {
 	res.sendFile(path.join(__dirname, 'index.html'));
 });
@@ -44,13 +47,11 @@ http.listen(3000, () => {
 
 Of course, for us to send the file `index.html` it has to exist. Create it and paste in `<h1>Hello, World!</h1>`, just a placeholder for now.
 
-Now you can see it for yourself. Simply run `node index.js` or `node index` in the directory where the files are, and then open http://localhost:3000/ in your browser to see `Hello, World!` emblazoned in huge text across your screen.
-
-Once you're satisfied that it works so far, we'll start building the chat room itself.
+Now you can see it for yourself. Simply run `node index.js` or `node index` in the directory where the files are, and then open http://localhost:3000/ in your browser to see `Hello, World!` emblazoned in huge text across your screen. Once you're satisfied that it works so far, we'll start building the chat room itself.
 
 ## Using usernames
 
-First, we'll initialise socket.io on the server and listen in on the connection event. Socket.io (and by extension WebSockets) are quite simple; the server connects to various sockets (clients) and exchanges data. This realtime communication system is what powers just about every chat application, online game or other I/O heavy server system ever.
+First, we'll initialise socket.io (the websockets server) on the server and listen in on the connection event. Socket.io (and by extension WebSockets) are quite simple; the server connects to various sockets (clients) and the server and client can exchange small packets of data. This realtime communication system is what powers just about every chat application, online game or other I/O heavy server system.
 
 The socket.io API revolves primarily around the `io` connection event; for it is there that sockets are received and worked with.
 
@@ -58,8 +59,10 @@ The socket.io API revolves primarily around the `io` connection event; for it is
 const express = require('express')();
 const http = require('http').Server(express);
 const path = require('path');
-const io = require('socket.io')(http);
+const io = require('socket.io')(http); // initialise socket.io
 
+// io is the socket.io server object
+// io.on registers an event listener
 io.on('connection', (socket) => {
 	console.log('A new user has connected with ID: ' + socket.id);
 
@@ -71,18 +74,18 @@ io.on('connection', (socket) => {
 	});
 });
 
+// routing
 express.get('/', (req, res) => {
 	res.sendFile(path.join(__dirname, 'index.html'));
 });
 
+// load http server on localhost:3000
 http.listen(3000, () => {
 	console.log('Loaded to http://localhost:3000/');
 });
 ```
 
-Then we replace the HTML in `index.html` with something useful. Nothing fancy, just a workable form asking for a username for now. I'm not going to include the `head` section or anything like that, just plug everything into a basic HTML template.
-
-For the form to actually work and do something, we need to load in the socket.io client, connect, and use it to alert the server of our username when ready.
+Then we replace the HTML in `index.html` with something useful. Nothing fancy, just a workable form asking for a username for now. I'm not going to include the `head` section or anything like that, you'll just have to plug everything into a basic HTML template. For the form to actually work and do something, we need to load in the socket.io client, connect, and use it to alert the server of our username when ready.
 
 ```html
 <div id='login'>
@@ -91,14 +94,18 @@ For the form to actually work and do something, we need to load in the socket.io
 </div>
 ```
 
-Now, that relies upon there being a function, `startChatting`, which we'll now write. `startChatting` will send the client's username via socket.io to the server, and then let the user start chatting. To use socket.io, we need to actually link to it in our HTML. Then, we initialise the client's socket and define our `startChatting` function. (We'll use ES5 for compatibility.)
+That code relies on `startChatting`, which we'll now write. `startChatting` will send the client's username via socket.io to the server, and then let the user start chatting. To use socket.io, we need to actually link to it in our HTML. Then, we initialise the client's socket and define our `startChatting` function. (We'll use ES5 for compatibility.)
 
 ```html
+<!-- The socket.io server serves the client script, we don't need to do anything in our expressjs router -->
 <script src="/socket.io/socket.io.js"></script>
 <script>
+	// establish a connection (triggers 'connection' event on server)
 	var socket = io();
 
 	function startChatting(){
+		// emit a custom event, 'login', to the server, sending the value of the name input field
+		// this takes an optional callback (called an acknowledgement function) to verify the validity of the username
 		socket.emit('login', document.getElementById('name').value, function(nameIsOk){
 			if(nameIsOk){
 				//Change screens to the chatting screen which we haven't made yet
@@ -111,21 +118,21 @@ Now, that relies upon there being a function, `startChatting`, which we'll now w
 </script>
 ```
 
-Now, when the user wishes to start chatting, they can press the button, which sends the value of the username field via socket.io as a `login` event. Events can be named whatever you want them to be, and you can have as many as you want. To send a message from the client to the server, you use `socket.emit(evt_name, data)` where data can be pretty much anything. (You'll need to refer to the [socket.io docs](http://socket.io/docs/) for that though.)
+Now, when the user wishes to start chatting, they can press the button, which sends the value of the username field via socket.io as a `login` event. Events can be named whatever you want them to be, and you can have as many as you want. To send a message from the client to the server, you use `socket.emit(eventName, data)` where `data` can be pretty much anything. (You'll need to refer to the [socket.io docs](http://socket.io/docs/) for that though.)
 
 Then, as well as simply emitting an event, we've given an optional callback function, called an acknowledgement. Put simply, this means that the server will pass some data back to that callback; in this case a boolean indicating whether the client has submitted a valid name or not.
 
-So what we must do next is listen for the `login` event on the server with the following code. We validate the name, send back some data to say the name's ok (or not) and then broadcast to all other clients the new client's name. To broadcast to all other clients from the server, we use `socket.broadcast.emit`, whilst we would normally use `io.emit` to send messages.
+So what we must do next is listen for the `login` event on the server with the following code. We validate the name, send back some data to say the name's OK (or not) and then broadcast to all other clients the new client's name. To broadcast to all other clients (all but the new user) from the server, we use `socket.broadcast.emit`, whilst we would normally use `io.emit` to send messages.
 
 As for name validation, anything between 1 and 20 characters, with whitespace trimmed, will do for now.
 
-```
+```js
 io.on('connection', (socket) => {
 	console.log('A new user has connected with ID: ' + socket.id);
 
 	socket.on('login', (name, acknowledge) => {
 
-		//If the name isn't a string, they're a hacker
+		//If the name isn't a string, they're a hacker :/
 		if(typeof name !== 'string')
 			return;
 
@@ -166,12 +173,12 @@ io.on('connection', (socket) => {
 
 So we now have a new event, `loggedin`, being sent to every user other than the logged in user (they are notified by the acknowledgement.) Now that we have that, we can build the chat room itself and listen in on the `loggedin` event on the client. We also have code to emit an event, `loggedout`, when a user disconnects. We'll listen in on that as well soon.
 
-## Building the chat room itself
+## Building the client
 
 First we'll build the HTML structure of the chat room. It'll be relatively simple to start off with, and you'll have to write your own CSS. We will need one CSS class though, `.hidden`, which'll do as the name implies.
 
 ```css
-.hidden{
+.hidden {
 	display: none;
 }
 ```
@@ -186,7 +193,7 @@ First we'll build the HTML structure of the chat room. It'll be relatively simpl
 </div>
 ```
 
-Now we are nearly ready to set up sending messages. Before we do, though, we need to set up changing from the first screen, the login screen, to the chat screen. Doing that is quite simple; we simply use the `classList` API to swap which screen is `.hidden` and which isn't. We put this code in the `if(nameIsOk){ ... }` part; but don't copy it just yet. Also in that `if` clause, we will utilise a function `addMessage` which we will write shortly to show a server welcome message.
+Now we are nearly ready to set up sending messages. Before we do, though, we need to set up changing from the first screen, the login screen, to the chat screen. Doing that is quite simple; we simply use the DOM `classList` API to swap which screen is `.hidden` and which isn't. We put this code in the `if(nameIsOk){ ... }` part; but don't copy it just yet. Also in that `if` clause, we will utilise a function `addMessage` which we will write shortly to show a server welcome message.
 
 ```js
 //Change screens to the chatting screen
@@ -226,6 +233,24 @@ function sendMessage(){
 
 //The chatmessage event listener adds the message straight to the element `div#messages`
 socket.on('chatmessage', addMessage);
+```
+
+### XSS
+Wait! If you look at the above code you can see it just inserts user generated strings straight into the HTML! This means the above code is vulnerable to XSS (cross-site scripting), an exploit in which you can insert malicious code straight into a webpage. If someone sent the message `<script>alert("XSS!")</script>` with the above code, that inline script would execute. To prevent this, we can simply alter `addMessage` to sanitise the message before displaying it by escaping special HTML characters.
+
+```js
+// source: https://stackoverflow.com/a/6234804/4642943
+function escapeHTML (unsafe) {
+    return unsafe
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+		.replace(/&/g, "&amp;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
+function addMessage(msg){
+	document.getElementById('messages').innerHTML += "<div class='msg'>" + escapeHTML(msg) + "</div>";
+}
 ```
 
 Here is the full client code:
@@ -269,8 +294,17 @@ Here is the full client code:
 		});
 	}
 
+	function escapeHTML (unsafe) {
+	    return unsafe
+	        .replace(/</g, "&lt;")
+	        .replace(/>/g, "&gt;")
+			.replace(/&/g, "&amp;")
+	        .replace(/"/g, "&quot;")
+	        .replace(/'/g, "&#039;");
+	}
+
 	function addMessage(msg){
-		document.getElementById('messages').innerHTML += "<div class='msg'>" + msg + "</div>";
+		document.getElementById('messages').innerHTML += "<div class='msg'>" + escapeHTML(msg) + "</div>";
 	}
 
 	function sendMessage(){
@@ -293,6 +327,8 @@ Here is the full client code:
 	socket.on('chatmessage', addMessage);
 </script>
 ```
+
+## Handling messages on the server
 
 Now all that's left is finishing off the server. We just need to handle the `chatmessage` event and broadcast the message to all clients other than the sender and the rest will tie in together perfectly. Put the following code right between the `login` event handler and the `disconnect` event handler in `index.js`.
 
@@ -384,18 +420,19 @@ http.listen(3000, () => {
 
 ## Finishing off
 
-This is an extremely simple chat room, similar to a basic implementation of IRC. There are loads of things you could do to make this better. Here is a list of ideas for expanding the chat room:
+This is an extremely simple chat room, similar to IRC. There are loads of things you could do to make this better. Here is a list of ideas for expanding the chat room:
 
  - Checking for duplicate nicknames
  - Logging messages and letting users scroll up to see older messages
- - @mentioning
- - Accounts
+ - @mentioning other users
+ - An account system
  - An online user list
  - 'user123 is typing...'
- - Direct messaging
- - Rate limiting
- - Links and images
- - Moderation
+ - Direct/private messaging
+ - Rate limiting messages
+ - Support for links and images
+ - Moderation or permission system
+ - Multiple 'rooms', each user can create their own and moderate it
  - File uploads
 
 Any other ideas? Feel free to share them in the comments!

@@ -2,7 +2,7 @@
 layout: post
 title: "Making a Realtime Chat Room in Node.js"
 categories: canvas
-tags: nodejs websockets expressjs
+tags: nodejs websockets expressjs javascript
 ---
 
 Obviously, you'll need Node.js for this (https://nodejs.org) which as of writing this post the latest version is v7.4.0 and the latest stable version is v6.9.4.

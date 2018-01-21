@@ -99,7 +99,7 @@ document.addEventListener('keyup', function(e){ keys[e.which] = false; });
 
 There we have it. A basic spaceship simulation controlled by arrow keys. The only problem with it, though, is that there is no friction, so the spaceship will just drift endlessly when left untouched.
 
-{% include codepen-embed.html slug="ONWmRd"%}
+{% include codepen-embed.html slug="ONWmRd" %}
 
 ### Friction
 There are two ways to implement friction. One is the correct way, which is slightly more CPU intensive, but more accurate. You should always do it the proper way in simulations, but there is also a cheat's way, which we'll use most of the time because it's easier to write and much more efficient.

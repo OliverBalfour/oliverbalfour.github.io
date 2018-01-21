@@ -54,7 +54,7 @@ while (x < w) { // w is the width of the canvas in pixels
 
 Remember when setting the fill style to make sure the `r`, `g` and `b` values are all whole numbers using `Math.round`!
 
-{% include codepen-embed.html slug="oxYzde"%}
+{% include codepen-embed.html slug="oxYzde" %}
 
 You can easily make a function that interfaces like `createLinearGradient` using the above code as a starting point. However, that's out of the scope of this tutorial. But first, we will adapt our above code to produce a prettier gradient and use cosine interpolation instead of linear interpolation.
 
@@ -103,7 +103,7 @@ function interpolate(a, b, px){
 
 I won't go into the math, but If you use it as a replacement for the linear interpolation function, you get this result:
 
-{% include codepen-embed.html slug="zqoNrm"%}
+{% include codepen-embed.html slug="zqoNrm" %}
 
 There isn't much difference, but if you compare it closely with the last one, you'll find it eases in and out, whereas linear interpolation doesn't. Cosine interpolation is much prettier for blending bright colour blocks together at the edges, but a very subtle difference and not as efficient.
 
@@ -132,11 +132,11 @@ while(x > 0){
 
 Combine that with the beginning of the linear gradient's code (the start and end colour variables, the canvas setup etc.) you have a fully functioning radial gradient maker!
 
-{% include codepen-embed.html slug="aNBBKG"%}
+{% include codepen-embed.html slug="aNBBKG" %}
 
 We can also draw a slightly less attractive and efficient radial gradient using trigonometry, just because it was pi day yesterday as of writing (3/14/15.) The way we do it is, instead of drawing a circle with the `arc` function, we loop an amount of iterations equal to the circumference of the circle at the current radius. (Equal to `radius * Math.PI * 2`.) Then, we calculate the angle that we're up to, which is a fraction of `Math.PI * 2`. Lastly we draw a small dot at the position we're up to. Seeing as we only have the angle and radius, we need trig. So, `x = Math.cos(angle) * radius` and `y = Math.sin(angle) * radius`.
 
-{% include codepen-embed.html slug="pyNNZe"%}
+{% include codepen-embed.html slug="pyNNZe" %}
 
 The above gradient isn't particularly attractive with its rough edges; those are because each dot is drawn as a 3x3 pixel square, as any smaller leaves gaps in the gradient. The previous example is certainly faster, and prettier. Not as fast as a generic radial gradient made with CSS or the canvas's context, but good all the same. Anyway, that brings us to the end of making radial gradients programmatically.
 

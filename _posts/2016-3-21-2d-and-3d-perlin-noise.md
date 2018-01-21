@@ -67,11 +67,11 @@ var noise = new ImprovedNoise();
 noise.noise(x, y, z);
 ```
 
-You can make as many of these generators as you wish, however don't use the same object for multiple things, as you'll end up using the same PSNG, which would just ruin what you're making. The `noise` method takes three parameters: x, y and z. If you want to make 2D noise, just use 1 or some other value for the z to keep it constant.
+You can make as many of these generators as you wish, however don't use the same object for multiple things, as you'll end up using the same PRNG, which would just ruin what you're making. The `noise` method takes three parameters: x, y and z. If you want to make 2D noise, just use 1 or some other value for the z to keep it constant.
 
 ## Making our first Perlin based texture
 
-{% include codepen-embed.html slug="wGGOqx"%}
+{% include codepen-embed.html slug="wGGOqx" %}
 
 Remember that example, from the previous post? Imagine it wasn't animated for a second, as we'll get to animation in time. The texture is just an array of 2D Perlin Noise where the values are turned from floats into an RGB value, like this:
 
@@ -85,7 +85,7 @@ function perlinToRGB(perlinVal){
 
 Simply draw the results from the Perlin Noise converted to RGB and boom! Procedurally generated textures! We can easily make our textures colourful by just changing around how the RGB value is calculated. See if you can make something looking like this without peeking at the code (ignoring the animation):
 
-{% include codepen-embed.html slug="bppZrx"%}
+{% include codepen-embed.html slug="bppZrx" %}
 
 ## Animation
 Now, we'll get into using the Z value. Have a peek at the code in the above example. You'll notice that we put a variable, `time`, in the z position. Every frame we increment `time` by a tiny amount.
@@ -103,7 +103,7 @@ I'll leave it at that, but for inspiration, I'll leave you with an awesome demo 
 
 Controls: WASD or arrow keys to rotate and move, space to jump, and '[' and ']' to change between first and third person views. (Try third person! It looks really cool.) It uses THREE.js to render. The terrain and texture of the terrain are procedurally generated using 2D Perlin Noise, the terrain using a Perlin Noise texture as a heightmap. Have a look! Feel free to fork it and make whatever you want. (If it's laggy, it's the fault of all the other examples in the post combined, not just this one.)
 
-{% include codepen-embed.html slug="jqqgRV"%}
+{% include codepen-embed.html slug="jqqgRV" %}
 
 Once again, thanks for reading and see you next time.
 

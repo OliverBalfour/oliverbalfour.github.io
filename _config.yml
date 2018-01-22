@@ -40,6 +40,9 @@ header_pages:
   - about.md
   - tags.md
 
+disqus:
+  shortname: olivers-blog
+
 google_analytics: UA-107210245-1
 
 # Exclude from processing.

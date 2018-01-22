@@ -1,5 +1,6 @@
 
-implement comments
+fix google analytics
+typography
 finish editing older posts
 
 javascript canvas

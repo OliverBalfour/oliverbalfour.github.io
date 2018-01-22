@@ -6,7 +6,7 @@ tags: nodejs websockets expressjs javascript
 edited: 2018-1-21
 ---
 
-Obviously, you'll need Node.js for this (https://nodejs.org.) As of January 2018 the latest version is v9.4.0 and the long term support version (LTS) is v8.9.4.
+Obviously, you'll need Node.js for this ([https://nodejs.org](https://nodejs.org).) As of January 2018 the latest version is v9.4.0 and the long term support version (LTS) is v8.9.4.
 
 ## Getting started
 

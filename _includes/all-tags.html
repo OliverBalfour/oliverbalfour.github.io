@@ -28,7 +28,7 @@ Array.prototype.slice.call(document.getElementsByClassName('tag-container')).for
   }).map(function(a){ return a.e });
   sorted.forEach(function(child, i) {
 	  {% if include.limit %}
-	  if (i > {{ include.limit }}) return;
+	  if (i >= {{ include.limit }}) return;
 	  {% endif %}
 	  container.appendChild(child);
   });

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Procedural Content Generation (PCG) Part 1 - 1 Dimensional Perlin Noise"
+title: "1 Dimensional Perlin Noise"
 categories: pcg
 tags: canvas javascript pcg
 ---
@@ -145,6 +145,6 @@ DrawLine(CombineNoise(GenerateNoise(128, 128, 8, 2, window.innerWidth)));
 ```
 
 ## Finishing up
-With 1D Perlin Noise alone, you can make procedurally generated landscapes similar to those in Terraria (But much simpler). The next post is here: [Procedural Content Generation (PCG) Part 2 - 2 and 3 Dimensional Perlin Noise](pcg/2016/03/21/2d-and-3d-perlin-noise.html)
+With 1D Perlin Noise alone, you can make procedurally generated landscapes similar to those in Terraria (But much simpler). The next post is here: [2 and 3 Dimensional Perlin Noise](pcg/2016/03/21/2d-and-3d-perlin-noise.html)
 
 *This post was originally posted on my CodePen blog [here.](https://codepen.io/Tobsta/post/procedural-generation-part-1-1d-perlin-noise)*

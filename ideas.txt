@@ -24,3 +24,7 @@ pcg
 	maze generation algorithms
 physics
 	bounding box and circle collision detection
+cryptography
+	cryptocurrency trends, etc
+	blockchain explanation
+	image steganography (including image-within-image, potentially using FLIF)

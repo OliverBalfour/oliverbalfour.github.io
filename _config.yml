@@ -40,6 +40,14 @@ header_pages:
   - about.md
   - tags.md
 
+exclude [
+  .gitignore,
+  README.md,
+  Gemfile,
+  Gemfile.lock,
+  ideas.txt
+]
+
 disqus:
   shortname: olivers-blog
 

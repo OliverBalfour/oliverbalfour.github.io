@@ -17,6 +17,11 @@ pre.highlight > code {
 
 video, img {
 	max-width: 100%;
+	display: block;
 	margin-left: auto;
 	margin-right: auto;
+}
+
+.center {
+	text-align: center;
 }

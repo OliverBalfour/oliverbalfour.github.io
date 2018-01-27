@@ -1,4 +1,6 @@
-<video src="{{ include.src }}" poster="{{ include.poster }}">
+<video controls poster="{{ include.poster }}">
+	<source src="/assets/videos/{{ include.src }}.mp4" type="video/mp4" />
+	<source src="/assets/videos/{{ include.src }}.webm" type="video/webm" />
 	<img src="{{ include.poster }}" alt='Poster image for video.' />
 	Sorry, your browser doesn't support embedded videos like this one, but you can <a href="{{ include.src }}">download it</a> instead and watch it with your favorite video player!
 </video>

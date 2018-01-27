@@ -14,3 +14,9 @@ pre.highlight > code {
 	-o-tab-size: 4;
 	-webkit-tab-size: 4;
 }
+
+video, img {
+	max-width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+}

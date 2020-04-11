@@ -17,17 +17,17 @@
 description: >- # this means to ignore newlines until "baseurl:"
   A personal blog about programming and tech.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://tobsta.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://oliverbalfour.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 title: Oliver's Blog
 author: Oliver
 # email:
 
 
 # twitter_username: jekyllrb
-github_username: Tobsta
-codepen_username: Tobsta
-stackoverflow_username: Tobsta
-stackoverflow_url: 4642943/tobsta
+github_username: OliverBalfour
+codepen_username: OliverBalfour
+stackoverflow_username: Oliver
+stackoverflow_url: 4642943/oliver
 
 # Build settings
 markdown: kramdown

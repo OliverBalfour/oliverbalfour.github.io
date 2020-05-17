@@ -38,14 +38,16 @@ plugins:
 
 header_pages:
   - about.md
-  - tags.md
+  # - tags.md
 
 exclude: [
   .gitignore,
   README.md,
   Gemfile,
   Gemfile.lock,
-  ideas.txt
+  ideas.txt,
+  tags/*.md,
+  tags.md
 ]
 
 disqus:

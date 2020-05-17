@@ -107,4 +107,4 @@ Controls: WASD or arrow keys to rotate and move, space to jump, and '[' and ']' 
 
 Once again, thanks for reading and see you next time.
 
-*This post was originally posted on my CodePen blog [here.](https://codepen.io/Tobsta/post/procedural-generation-part-2-2d-3d-perlin-noise)*
+*This post was originally posted on my CodePen blog [here.](https://codepen.io/OliverBalfour/post/procedural-generation-part-2-2d-3d-perlin-noise)*

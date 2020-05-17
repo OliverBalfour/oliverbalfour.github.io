@@ -164,4 +164,4 @@ The difference isn't exactly noticeable, excluding the fact that the strength of
 
 Thanks for reading!
 
-*This post was originally posted on my CodePen blog [here.](https://codepen.io/Tobsta/post/implementing-velocity-acceleration-and-friction-on-a-canvas)*
+*This post was originally posted on my CodePen blog [here.](https://codepen.io/OliverBalfour/post/implementing-velocity-acceleration-and-friction-on-a-canvas)*

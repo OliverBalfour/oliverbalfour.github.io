@@ -142,4 +142,4 @@ The above gradient isn't particularly attractive with its rough edges; those are
 
 Thanks for reading. See you next time!
 
-*This post was originally posted on my CodePen blog [here.](https://codepen.io/Tobsta/post/programmatically-making-gradients)*
+*This post was originally posted on my CodePen blog [here.](https://codepen.io/OliverBalfour/post/programmatically-making-gradients)*

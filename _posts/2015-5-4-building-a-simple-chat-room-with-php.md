@@ -1,8 +1,7 @@
 ---
 layout: post
 title: "Building a Simple Chat Room with PHP"
-tags: php
-categories: archive
+categories: php
 edited: 2018-1-19
 ---
 
@@ -83,7 +82,7 @@ Now, with that set up we can program the chat page. In the last snippet, before 
 </div>
 ```
 
-Above we have implemented the message sending form, with a hidden `username` value. Now, in there you have probably noticed the two empty PHP tags. Those two places are where the rest of our logic will go. In the first one will be the code to check if the user has just sent a message, and if so, to add it to the chat log. For now, we'll just use a plain text file as a chat log, but you may want to use a database for a more complex chat application. Open and save a new blank file called log.txt and change the file permissions so that only the server can read the file.
+Above we have implemented the message sending form, with a hidden `username` value. Now, in there you have probably noticed the two empty PHP categories. Those two places are where the rest of our logic will go. In the first one will be the code to check if the user has just sent a message, and if so, to add it to the chat log. For now, we'll just use a plain text file as a chat log, but you may want to use a database for a more complex chat application. Open and save a new blank file called log.txt and change the file permissions so that only the server can read the file.
 
 So, now that we have a chat log, we'll be able to log to it. This code, if a message has been POSTed, will append the message as HTML to the end of the log.txt file. Note that this is a very naive approach &mdash; if we wanted to change message markup we'd have to manually go through the file and change it or scrap the older logs. Dumping messages in plaintext or JSON and then formatting them later is a better approach, but more verbose. The following code goes into the first empty PHP tag from above. (The dot `.` operator in PHP concatenates strings, so `$current . $new` adds them together.)
 

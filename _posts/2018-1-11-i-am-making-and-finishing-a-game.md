@@ -2,7 +2,6 @@
 layout: post
 title: "I'm Making (And Finishing) A Game"
 categories: game-dev
-tags: cpp game-dev sdl opengl
 ---
 
 I've started making a game. I don't know what it is, or what it will be, but so far it's a side on tech demo with broken platformer physics and barely functional 'graphics.' Despite dealing with the same map maker, the same collision hitboxes and the same physics many times before, I've never combined them in this way, and I've found that collision detection and state management has been a real pain. Add to that that I'm writing this game in C++, a language I've only dabbled in before now, using SDL and OpenGL, libraries I'd only vaguely heard of until now, and I have a real challenge on my hands. I'm hoping, though, that through experimentation and trial-and-error that comes with working with a lower level programming language than the ones I'm used to, will help bring about a unique character for this game. (I say, as I am building the most generic game in history.)

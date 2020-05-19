@@ -1,21 +1,21 @@
-{% capture temptags %}
-  {% for tag in site.tags %}
+{% capture tempcategories %}
+  {% for tag in site.categories %}
     {{ tag[0] }}#{{ tag[1].size }}
   {% endfor %}
 {% endcapture %}
-{% assign sortedtemptags = temptags | split:' ' | sort | reverse %}
+{% assign sortedtempcategories = tempcategories | split:' ' | sort | reverse %}
 
 <div class='tag-container'>
-{% for temptag in sortedtemptags %}
+{% for temptag in sortedtempcategories %}
   {% assign tagitems = temptag | split: '#' %}
   {% assign name = tagitems[0] %}
   {% assign count = tagitems[1] %}
-  <div><a href='{{ "/tags/" | relative_url }}{{ name }}' class='tag'><code>{{ name }}</code> [<span class='tag-count'>{{ count }}</span>]</a></div>
+  <div><a href='{{ "/categories/" | relative_url }}{{ name }}' class='tag'><code>{{ name }}</code> [<span class='tag-count'>{{ count }}</span>]</a></div>
 {% endfor %}
 </div>
 
 <script>
-// liquid won't let me sort tags by their number of posts, so I have to use JS to reorder DOM elements :/
+// liquid won't let me sort categories by their number of posts, so I have to use JS to reorder DOM elements :/
 // es5 :(
 Array.prototype.slice.call(document.getElementsByClassName('tag-container')).forEach(function(container){
   var unsorted = [];

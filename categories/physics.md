@@ -1,6 +1,6 @@
 ---
 layout: tag
 title: Posts tagged physics
-permalink: /tags/physics/
+permalink: /categories/physics/
 tag: physics
 ---

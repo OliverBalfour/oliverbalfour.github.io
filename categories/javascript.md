@@ -1,6 +1,6 @@
 ---
 layout: tag
 title: Posts tagged javascript
-permalink: /tags/javascript/
+permalink: /categories/javascript/
 tag: javascript
 ---

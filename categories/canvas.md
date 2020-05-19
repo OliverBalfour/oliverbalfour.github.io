@@ -1,6 +1,6 @@
 ---
 layout: tag
 title: Posts tagged canvas
-permalink: /tags/canvas/
+permalink: /categories/canvas/
 tag: canvas
 ---

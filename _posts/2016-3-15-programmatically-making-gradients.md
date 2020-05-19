@@ -2,7 +2,6 @@
 layout: post
 title: "Programmatically Making Gradients"
 categories: canvas
-tags: canvas javascript
 edited: 2018-1-20
 ---
 

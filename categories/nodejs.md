@@ -1,6 +1,6 @@
 ---
 layout: tag
 title: Posts tagged nodejs
-permalink: /tags/nodejs/
+permalink: /categories/nodejs/
 tag: nodejs
 ---

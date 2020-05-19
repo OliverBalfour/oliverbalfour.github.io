@@ -1,6 +1,6 @@
 ---
 layout: tag
 title: Posts tagged php
-permalink: /tags/php/
+permalink: /categories/php/
 tag: php
 ---

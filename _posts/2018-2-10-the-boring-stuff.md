@@ -2,7 +2,6 @@
 layout: post
 title: "The Boring Stuff"
 category: game-dev
-tags: game-dev physics
 ---
 
 I haven't had much time to work on my game in the past few weeks, now that I'm back at school. I'm still stuck on collision detection and basic physics at the moment, although instead of glitching through the floor the player now gets stuck in walls when they hit them in midair. I know how to fix all of this, except now that I have studying to focus on I'm finding it very difficult to concentrate on programming. All I really need to fix this all is a two hour chunk of time on a weekend with no distractions and no other work left to do, and then I can get right into making this game unique (or at least less generic,) but until then I'll just have to brainstorm ideas in my free time.

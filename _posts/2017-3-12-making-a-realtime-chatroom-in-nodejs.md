@@ -1,8 +1,7 @@
 ---
 layout: post
 title: "Making a Realtime Chat Room in Node.js"
-categories: nodejs
-tags: nodejs websockets expressjs javascript
+categories: nodejs expressjs websockets
 edited: 2018-1-21
 ---
 

@@ -1,8 +1,7 @@
 ---
 layout: post
 title: "1 Dimensional Perlin Noise"
-categories: pcg
-tags: canvas javascript pcg
+categories: algorithms canvas javascript
 ---
 
 ## Procedural generation

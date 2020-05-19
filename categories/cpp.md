@@ -1,6 +1,6 @@
 ---
 layout: tag
 title: Posts tagged cpp
-permalink: /tags/cpp/
+permalink: /categories/cpp/
 tag: cpp
 ---

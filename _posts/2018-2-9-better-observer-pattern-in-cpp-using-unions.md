@@ -2,7 +2,6 @@
 layout: post
 title: "Better Observer Pattern in C++ using Unions"
 categories: cpp
-tags: cpp sdl
 ---
 
 The Observer design pattern is a common way of decoupling code in large applications and passing event data between the various parts of applications.

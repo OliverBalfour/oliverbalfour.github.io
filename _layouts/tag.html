@@ -4,7 +4,7 @@ layout: default
 <div class="post">
 <h1>Posts tagged <code style='font-size: 1em'>{{ page.tag }}</code></h1>
 <ul>
-{% for post in site.tags[page.tag] %}
+{% for post in site.categories[page.tag] %}
 	<li><a href="{{ post.url | relative_url }}">{{ post.title }}</a> ({{ post.date | date_to_string }})<br>
 		{{ post.description }}
 	</li>

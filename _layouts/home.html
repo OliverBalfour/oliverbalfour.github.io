@@ -7,7 +7,7 @@ layout: default
 	{{ content }}
 
 	<h1 class="page-heading">Posts</h1>
-	
+
 	<ul class="post-list">
 		{% for post in site.posts %}
 			<li>
@@ -15,7 +15,10 @@ layout: default
 				<span class="post-meta">{{ post.date | date: date_format }}</span>
 
 				<h2>
-					<a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+					<p class="post-link">
+						<a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+						<small><code>{{ post.categories[0] | escape }}</code></small>
+					</p>
 				</h2>
 			</li>
 		{% endfor %}

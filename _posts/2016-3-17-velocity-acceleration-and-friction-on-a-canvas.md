@@ -1,8 +1,7 @@
 ---
 layout: post
 title: "Implementing Velocity, Acceleration and Friction on a Canvas"
-categories: canvas
-tags: canvas javascript physics
+categories: canvas physics javascript
 edited: 2018-1-20
 ---
 

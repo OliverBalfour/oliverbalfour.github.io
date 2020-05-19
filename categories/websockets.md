@@ -1,6 +1,6 @@
 ---
 layout: tag
 title: Posts tagged websockets
-permalink: /tags/websockets/
+permalink: /categories/websockets/
 tag: websockets
 ---

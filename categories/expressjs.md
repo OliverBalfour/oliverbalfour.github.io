@@ -1,6 +1,6 @@
 ---
 layout: tag
 title: Posts tagged expressjs
-permalink: /tags/expressjs/
+permalink: /categories/expressjs/
 tag: expressjs
 ---

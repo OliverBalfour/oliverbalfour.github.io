@@ -1,8 +1,7 @@
 ---
 layout: post
 title: "2 and 3 Dimensional Perlin Noise"
-categories: pcg
-tags: canvas javascript pcg
+categories: algorithms canvas javascript
 ---
 
 Welcome back! If you haven't read my previous post on 1D Perlin Noise, I'd recommend looking at that to get an understanding of how it works. It's over [here](/pcg/2016/03/19/1d-perlin-noise.html).

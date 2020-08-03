@@ -2,6 +2,7 @@
 layout: post
 title: "My Problems with Collision Detection"
 categories: game-dev
+published: false
 ---
 
 After only a couple of weeks of programming this game, I've had the hardest time with collision detection I've ever had. No RPG, physics simulation, or other program I've ever written has had collision detection that is this fundamentally broken. When you start the game in midair just above the ground, you sometimes, randomly, fall through the floor even though I've got an algorithm in place to stop you falling just before you even hit anything. Sometimes, you hit the ground and stay there, but the code doesn't register that as hitting the ground, and so you just vibrate in and out of the ground indefinitely. Sometimes, when you run off a platform at high speed, if you hit the side of another platform while still midair, you get stuck to it forever. Sometimes when you're running, you randomly glitch a single pixel into the floor and get stuck. Sometimes when you jump you glitch *the other way, through the ground.* At one point you had to left click after you landed from a jump or fall, otherwise you never registered as landing. Thankfully, I accidentally fixed that, and I still haven't the faintest clue what caused it.

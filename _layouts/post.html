@@ -1,0 +1,46 @@
+---
+layout: default
+---
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+	<header class="post-header">
+		<h1 class="post-title" itemprop="name headline">{{ page.title | escape }}</h1>
+		<p class="post-meta">
+			<time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+				{% assign date_format = site.minima.date_format | default: "%b %-d, %Y" %}
+				{{ page.date | date: date_format }}
+			</time>
+			{% if page.edited %}
+			<time datetime="{{ page.date | date_to_xmlschema }}" itemprop="dateModified">
+				(Edited {{ page.edited | date: date_format }})
+			</time>
+			{% endif %}
+			{% if page.author %}
+				• <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>
+			{% elsif site.author %}
+				• <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ site.author }}</span></span>
+			{% endif %}
+		</p>
+	</header>
+
+	<div class="post-content" itemprop="articleBody">
+		{{ content }}
+	</div>
+
+	{% comment %}
+	<span>
+		Tagged: &nbsp;
+		{% for tag in page.categories %}
+			<a href="{{ "/categories/" | relative_url }}{{ tag }}"><code class='tag' style='white-space: nowrap'>{{ tag }}</code></a>
+		{% endfor %}
+	</span>
+
+	<div class='top-categories'>
+		<h2>Top categories</h2>
+		{% include all-categories.html limit=5 %}
+	</div>
+
+	{% include comments.html %}
+	{% endcomment %}
+
+</article>

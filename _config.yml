@@ -1,0 +1,55 @@
+
+description: >-
+  Yet another programming blog
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://blog.oliverbalfour.com"
+title: Oliver's Blog
+author: Oliver Balfour
+# email:
+
+# twitter_username: ...
+github_username: OliverBalfour
+# codepen_username: OliverBalfour
+# stackoverflow_username: Oliver
+# stackoverflow_url: 4642943/oliver
+
+# Build settings
+markdown: kramdown
+kramdown:
+  math_engine: mathjax
+  highlighter: rouge
+  syntax_highlighter_opts:
+    block:
+      line_numbers: true
+theme: minima
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+header_pages:
+  - about.md
+  # - categories.md
+
+exclude:
+  - .gitignore
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - ideas.txt
+  - archive
+  - scripts
+  - node_modules
+  - package.json
+  - package-lock.json
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+
+# incremental: true
+
+disqus:
+  shortname: olivers-blog
+
+google_analytics: UA-174973522-1
+

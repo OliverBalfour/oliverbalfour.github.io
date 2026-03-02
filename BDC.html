@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>BDC</title>
+<style>
+  body, html {
+    margin: 0;
+    padding: 0;
+    background-color: #181a1b;
+    color: #e8e6e3;
+  }
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<script type='module'>
+
+import {LitElement, html, css} from 'https://cdn.jsdelivr.net/gh/lit/dist@2/core/lit-core.min.js';
+
+const sections = [
+  {
+    title: "Thoughts and Feelings",
+    questions: [
+      "Feeling sad or down in the dumps",
+      "Feeling unhappy or blue",
+      "Crying spells or tearfulness",
+      "Feeling discouraged",
+      "Feeling hopeless",
+      "Low self-esteem",
+      "Feeling worthless or inadequate",
+      "Guilt or shame",
+      "Criticizing yourself or blaming yourself",
+      "Difficulty making decisions",
+    ],
+  },
+  {
+    title: "Activities and Personal Relationships",
+    questions: [
+      "Loss of interest in family, friends or colleagues",
+      "Loneliness",
+      "Spending less time with family or friends",
+      "Loss of motivation",
+      "Loss of interest in work or other activities",
+      "Avoiding work or other activities",
+      "Loss of pleasure or satisfaction in life",
+    ],
+  },
+  {
+    title: "Physical Symptoms",
+    questions: [
+      "Feeling tired",
+      "Difficulty sleeping or sleeping too much",
+      "Decreased or increased appetite",
+      "Loss of interest in sex",
+      "Worrying about your health",
+    ],
+  },
+  {
+    title: "Suicidal Urges",
+    questions: [
+      "Do you have any suicidal thoughts?",
+      "Would you like to end your life?",
+      "Do you have a plan for harming yourself?",
+    ],
+  }
+];
+
+class Checklist extends LitElement {
+  static styles = css`
+  table {
+    table-layout: fixed;
+    border-collapse: collapse;
+    width: 100%;
+    user-select: none;
+    /*horizontal center after max width*/
+    max-width: 660px;
+    /*position: absolute;
+    left: 50%;
+    transform: translateX(-50%);*/
+  }
+  th {
+    background: rgb(24, 26, 27);
+    font-weight: normal;
+  }
+  td, th {
+    border-right: 1px solid rgb(62, 68, 70);
+  }
+  col.fixed-width {
+    width: 60px;
+  }
+  th.header-cell {
+    top: 0;
+    position: sticky;
+    z-index: 99;
+  }
+  th.border:after{
+    z-index: 98;
+    content:'';
+    position: absolute;
+    top: 0;
+    right: -1px;
+    height: 100%;
+    border-right: 1px solid rgb(62, 68, 70);
+  }
+  td.section {
+    background-color: rgb(34, 36, 38);
+    text-align: center;
+  }
+  th, td.section {
+    font-family: sans-serif;
+  }
+  td, th {
+    height: 10px; /* need a heighted parent for height:100% */
+  }
+  td:nth-child(1) {
+    padding: 6px 10px;
+  }
+  td.cell {
+    padding: 0;
+    border: 1px solid rgb(62, 68, 70);
+    cursor: pointer;
+  }
+  input[type="radio"] {
+    width: 100%;
+    height: 100%;
+    appearance: none;
+    margin: 0;
+    background-color: rgb(24, 26, 27);
+    /* css grid for vertical alignment, otherwise it's 2px too high (don't ask) */
+    display: grid;
+    place-content: center;
+    cursor: pointer;
+    border-radius: 0;
+  }
+  input[type="radio"].error {
+    background: rgb(100, 0, 0);
+  }
+  input[type="radio"]:checked, input[type="radio"].error:checked {
+    background: rgb(62, 68, 70);
+  }
+  span.subtitles {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: 0.7em;
+  }
+  td.score {
+    background-color: rgb(34, 36, 38);
+    cursor: pointer;
+  }
+  td.score.error {
+    background-color: rgb(100, 0, 0);
+  }
+  tr.row td:nth-child(1) {
+    text-align: right;
+  }
+  tr.row {
+    font-family: sans-serif;
+    font-size: 0.9em;
+  }
+  tr.selected {
+    font-weight: bold;
+  }
+
+  .end { display: none; }
+  @media only screen and (max-width: 600px) {
+    .end { display: block; height: 100px; width: 100px; }
+    col:nth-child(1) {
+      width: 170px;
+    }
+    col.fixed-width {
+      width: initial;
+    }
+    td, th {
+      overflow: hidden;
+    }
+  }
+
+  @media print {
+    td, th, input[type="radio"] {
+      color: #000 !important;
+    }
+    input[type='radio']{
+      -webkit-print-color-adjust:exact !important;
+      print-color-adjust:exact !important;
+      background-color: #fff !important;
+    }
+    input[type='radio']:checked {
+      background-color: #ccc !important;
+    }
+  }
+  `;
+
+  static properties = {
+    triedToScore: {type: Boolean},
+    checked: {type: Object},  // question string => whether it was checked at last attempt to score
+    score: {type: Number},  // not null when triedToScore and all questions are answered
+  }
+
+  constructor() {
+    super();
+    this.triedToScore = false;
+    this.checked = {};
+    this.score = null;
+  }
+
+  // paint rows with a mouse click and drag
+  paint(e) {
+    if (e.buttons === 1 ) {
+      const radio = e.target.closest('input[type="radio"]');
+      if (radio) radio.checked = true;
+    }
+  }
+
+  // allow up/down arrow key navigation between rows of radio buttons
+  radioKeydown(e) {
+    if (e.which === 38 || e.which === 40) {
+      e.preventDefault();
+      const radio = e.target;
+      const radios = [...this.shadowRoot.querySelectorAll('input[type="radio"]')];
+      const index = radios.indexOf(radio);
+      const next = radios[index + (e.which === 38 ? -5 : 5)];
+      if (next) {
+        next.focus();
+        next.checked = true;
+      }
+    }
+  }
+
+  render() {
+    return html`
+      <table class=${this.triedToScore ? 'scored' : ''}
+        @mousedown=${e => this.paint(e)}
+        @mousemove=${e => this.paint(e)}
+      >
+        <colgroup>
+          <col>
+          <col class="fixed-width">
+          <col class="fixed-width">
+          <col class="fixed-width">
+          <col class="fixed-width">
+          <col class="fixed-width">
+        </colgroup>
+        <thead>
+          <tr>
+            <th colspan="6">Burns Depression Checklist (from <a href="https://feelinggood.com/books/">David Burns</a>)</th>
+          </tr>
+          <tr>
+            <th>How much have you experienced each this past week?</th>
+            <th class="header-cell border">0<span class="subtitles">not at all</span></th>
+            <th class="header-cell border">1<span class="subtitles">somewhat</span></th>
+            <th class="header-cell border">2<span class="subtitles">moderately</span></th>
+            <th class="header-cell border">3<span class="subtitles">a lot</span></th>
+            <th class="header-cell">4<span class="subtitles">extremely</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          ${sections.map(section => html`
+            <tr>
+              <td class="section">${section.title}</td>
+              <td colspan="5" class="section"></td>
+            </tr>
+            ${section.questions.map(question => {
+              let cls = this.triedToScore && !this.checked[question] ? 'error':'';
+              return html`
+                <tr>
+                  <td>${question}</td>
+                  <td class="cell"><input type="radio" name="${question}" value="0" class=${cls} @keydown=${e => this.radioKeydown(e)}></td>
+                  <td class="cell"><input type="radio" name="${question}" value="1" class=${cls} @keydown=${e => this.radioKeydown(e)}></td>
+                  <td class="cell"><input type="radio" name="${question}" value="2" class=${cls} @keydown=${e => this.radioKeydown(e)}></td>
+                  <td class="cell"><input type="radio" name="${question}" value="3" class=${cls} @keydown=${e => this.radioKeydown(e)}></td>
+                  <td class="cell"><input type="radio" name="${question}" value="4" class=${cls} @keydown=${e => this.radioKeydown(e)}></td>
+                </tr>
+              `;
+            })}
+          `)}
+          <tr>
+            <td colspan="6" class="section" @click=${() => this.scoreChecklist()}
+              class=${this.triedToScore && this.score === null ? 'section score error' : 'section score'}>Score</td>
+          </tr>
+          ${this.score !== null ? html`
+            <tr>
+              <td colspan="6" class="section">Your score is <strong>${this.score}</strong> out of 100.</td>
+            </tr>
+            <tr class="row ${this.score>=0&&this.score<=5?'selected':''}"><td>0-5</td><td colspan="5">no depression</td></tr>
+            <tr class="row ${this.score>=6&&this.score<=10?'selected':''}"><td>6-10</td><td colspan="5">normal but unhappy</td></tr>
+            <tr class="row ${this.score>=11&&this.score<=25?'selected':''}"><td>11-25</td><td colspan="5">mild depression</td></tr>
+            <tr class="row ${this.score>=26&&this.score<=50?'selected':''}"><td>26-50</td><td colspan="5">moderate depression</td></tr>
+            <tr class="row ${this.score>=51&&this.score<=75?'selected':''}"><td>51-75</td><td colspan="5">severe depression</td></tr>
+            <tr class="row ${this.score>=76&&this.score<=100?'selected':''}"><td>76-100</td><td colspan="5">extreme depression</td></tr>
+          ` : ''}
+          <tr class="end"></tr>
+        </tbody>
+      </table>
+    `;
+  }
+
+  scoreChecklist() {
+    this.triedToScore = true;
+    // Loop over all radio button groups
+    const checked = {};
+    for (const section of sections) {
+      for (const question of section.questions) {
+        const options = [...this.shadowRoot.querySelectorAll(`input[name="${question}"]`)];
+        checked[question] = options.some(option => option.checked);
+      }
+    }
+    this.checked = checked;
+    // Exit early if any are unchecked
+    if (Object.values(this.checked).some(v => !v))
+      return;
+    // Sum up the scores of all radio buttons
+    this.score = Array.from(this.shadowRoot.querySelectorAll('input[type="radio"]'))
+      .filter(radio => radio.checked)
+      .map(radio => parseInt(radio.value))
+      .reduce((a, b) => a + b, 0);
+    // Scroll to the bottom of the page
+    setTimeout(() => {
+      window.scrollTo(0, document.body.scrollHeight);
+    }, 0);
+  }
+}
+customElements.define('bdc-checklist', Checklist);
+</script>
+
+<bdc-checklist/>
+
+</body>
+</html>

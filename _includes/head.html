@@ -1,0 +1,26 @@
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	{% seo %}
+
+	<link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}">
+
+	<!-- MathJax -->
+	<script type="text/javascript" async
+	  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+	</script>
+
+	{% comment %}
+	{% if site.categories != "" %}
+	<!-- Categories -->
+		{% include post-categories.html %}
+	{% endif %}
+	{% endcomment %}
+
+	<!-- Analytics -->
+	{% if site.google_analytics %}
+		{% include google-analytics.html %}
+	{% endif %}
+</head>

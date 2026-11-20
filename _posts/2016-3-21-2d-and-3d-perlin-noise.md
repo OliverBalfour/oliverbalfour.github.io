@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "2 and 3 Dimensional Perlin Noise in JavaScript"
-categories: javascript
 published: false
 ---
 

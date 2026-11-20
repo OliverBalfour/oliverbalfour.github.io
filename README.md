@@ -15,14 +15,6 @@ Follow these instructions to install Ruby [Linux](https://jekyllrb.com/docs/inst
 
 If you need to add extra packages try `bundle add XXX`
 
-Add pre-commit hook to generate tag pages: `.git/hooks/pre-commit`
-```sh
-#!/bin/bash
-python scripts/tag-page-gen.py
-git add categories/*.md
-```
-And `chmod +x .git/hooks/pre-commit`
-
 ## Usage
 
 `bundle exec jekyll serve --livereload --future --unpublished --open-url` to build, watch and run in realtime.

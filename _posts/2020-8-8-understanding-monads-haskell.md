@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "The Road to Monads 3: Understanding Monads in Haskell"
-categories: haskell
 ---
 
 This is the third article in a series about monads in Haskell. The others are available here:

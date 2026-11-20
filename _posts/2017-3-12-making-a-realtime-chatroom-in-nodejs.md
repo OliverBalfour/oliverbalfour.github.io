@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Making a Realtime Chat Room in Node.js"
-categories: nodejs
 edited: 2018-1-21
 ---
 

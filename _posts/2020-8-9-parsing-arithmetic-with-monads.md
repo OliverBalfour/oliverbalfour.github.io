@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "The Road to Monads 4: Parsing Arithmetic with Haskell Monads"
-categories: haskell
 ---
 
 This is the fourth and final article in a series on understanding monads in Haskell. If you have not already, feel free to check out the other posts below:

@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Building a Simple Chat Room with PHP"
-categories: php
 edited: 2018-1-19
 ---
 

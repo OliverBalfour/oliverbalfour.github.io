@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Programmatically Making Gradients in JavaScript"
-categories: javascript
 edited: 2018-1-20
 ---
 

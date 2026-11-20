@@ -3,6 +3,7 @@ description: >-
   Unmapped Territory: yet another programming blog
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://blog.oliverbalfour.com"
+permalink: /:year/:month/:day/:title.html
 title: Oliver's Blog
 author: Oliver Balfour
 # email:
@@ -28,7 +29,6 @@ plugins:
 
 header_pages:
   - about.md
-  # - categories.md
 
 exclude:
   - .gitignore
@@ -37,7 +37,6 @@ exclude:
   - Gemfile.lock
   - ideas.txt
   - archive
-  - scripts
   - node_modules
   - package.json
   - package-lock.json

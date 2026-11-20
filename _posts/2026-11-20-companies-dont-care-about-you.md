@@ -1,6 +1,8 @@
 ---
 layout: post
 title: "'Companies don't care about you' is a parse error"
+redirect_from:
+  - /life/2026/11/20/companies-dont-care-about-you.html
 ---
 
 A lot of people in the tech world are going through a period of angst right now. The job is changing, after all.

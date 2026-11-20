@@ -2,6 +2,8 @@
 layout: post
 title: "2 and 3 Dimensional Perlin Noise in JavaScript"
 published: false
+redirect_from:
+  - /javascript/2016/03/21/2d-and-3d-perlin-noise.html
 ---
 
 Welcome back! If you haven't read my previous post on 1D Perlin Noise, I'd recommend looking at that to get an understanding of how it works. It's over [here](/pcg/2016/03/19/1d-perlin-noise.html).

@@ -2,6 +2,8 @@
 layout: post
 title: "Building a Simple Chat Room with PHP"
 edited: 2018-1-19
+redirect_from:
+  - /php/2015/05/04/building-a-simple-chat-room-with-php.html
 ---
 
 [PHP is awful.](https://eev.ee/blog/2012/04/09/php-a-fractal-of-bad-design/) If you're learning it by choice, don't. Use something else, like node.js, Ruby on Rails, Python Django, or anything really. However, there are environments where PHP is the only option and I respect that. For a beginning programmer, free PHP hosts are often the easiest way to get things online. This tutorial shows how to make a very simple chat room in which you need to refresh the page to update the chat. Whilst I may cover automatic updating using server pinging in a future tutorial, that requires JavaScript which is out of the scope of this tutorial.

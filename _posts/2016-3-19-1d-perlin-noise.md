@@ -1,6 +1,8 @@
 ---
 layout: post
 title: "1 Dimensional Perlin Noise in JavaScript"
+redirect_from:
+  - /javascript/2016/03/19/1d-perlin-noise.html
 ---
 
 ## Procedural generation

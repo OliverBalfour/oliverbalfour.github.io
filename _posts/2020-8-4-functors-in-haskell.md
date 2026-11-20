@@ -1,6 +1,8 @@
 ---
 layout: post
 title: "The Road to Monads 1: Functors in Haskell"
+redirect_from:
+  - /haskell/2020/08/04/functors-in-haskell.html
 ---
 
 This is the first article in a series on understanding monads in Haskell. Once you have finished this post, feel free to check out the others below:

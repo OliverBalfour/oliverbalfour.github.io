@@ -1,6 +1,8 @@
 ---
 layout: post
 title: "The Road to Monads 2: Applicative Functors"
+redirect_from:
+  - /haskell/2020/08/06/applicative-functors.html
 ---
 This is the second article in a series on understanding monads in Haskell. If you have not already, feel free to check out the other posts below:
 

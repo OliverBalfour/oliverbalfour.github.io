@@ -2,6 +2,8 @@
 layout: post
 title: "Making a Realtime Chat Room in Node.js"
 edited: 2018-1-21
+redirect_from:
+  - /nodejs/2017/03/12/making-a-realtime-chatroom-in-nodejs.html
 ---
 
 Obviously, you'll need Node.js for this ([https://nodejs.org](https://nodejs.org).) As of January 2018 the latest version is v9.4.0 and the long term support version (LTS) is v8.9.4.

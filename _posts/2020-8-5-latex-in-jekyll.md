@@ -1,6 +1,8 @@
 ---
 layout: post
 title: "Adding LaTeX Equations to a Jekyll Blog"
+redirect_from:
+  - /jekyll/2020/08/05/latex-in-jekyll.html
 ---
 
 This is a quick tutorial on how to set up LaTeX equations in Jekyll, agnostic to the Jekyll version and without needing extra packages. This is an updated version of [this guide](https://varunagrawal.github.io/2018/03/27/latex-jekyll/), with no dependence on jQuery, error handling, and the latest version of KaTeX. All you need is to copy/paste predefined snippets into two files, and it should work like a charm!

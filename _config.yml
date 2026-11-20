@@ -26,6 +26,7 @@ theme: minima
 plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
+  - jekyll-redirect-from
 
 header_pages:
   - about.md

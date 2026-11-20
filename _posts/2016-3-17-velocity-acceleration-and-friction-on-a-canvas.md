@@ -2,6 +2,8 @@
 layout: post
 title: "Implementing Velocity, Acceleration and Friction on a Canvas"
 edited: 2018-1-20
+redirect_from:
+  - /javascript/2016/03/17/velocity-acceleration-and-friction-on-a-canvas.html
 ---
 
 ## Definition

@@ -1,6 +1,8 @@
 ---
 layout: post
 title: "Monoids in Haskell"
+redirect_from:
+  - /haskell/2020/08/02/monoids-in-haskell.html
 ---
 
 Haskell is heavily reliant on common constructs derived from abstract algebra and category theory, branches of advanced mathematics that many programmers, myself included, have very little formal exposure to. This post is designed to make the concept of monoids and their application in Haskell a little less intimidating.

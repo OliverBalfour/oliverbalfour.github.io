@@ -1,9 +1,9 @@
-# Oliver's Blog
+# Oliver's Blog: Unmapped Territory
 
 Uses jekyll + GH pages
 
 [OliverBalfour/oliverbalfour.github.io: Personal website source code](https://github.com/OliverBalfour/oliverbalfour.github.io)
-[Oliver’s Blog | Yet another programming blog](https://blog.oliverbalfour.com/)
+[Oliver’s Blog | Unampped Territory: yet another programming blog](https://blog.oliverbalfour.com/)
 
 ## Setup
 

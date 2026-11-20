@@ -5,7 +5,7 @@
 }
 
 .comments.no-comments {
-	color: grey;
+	color: $grey-color;
 }
 
 pre.highlight > code {
@@ -39,7 +39,7 @@ pre.highlight {
 }
 
 table.rouge-table {
-	color: #111111;
+	color: $text-color;
 	margin-bottom: 0;
 	width: auto;
 	max-width: 100%;
@@ -55,7 +55,15 @@ table.rouge-table {
 		margin: 0;
 		padding: 0;
 		padding-right: 4px;
-		color: #666;
-		border-right: 1px dashed #999;
+		color: #787e85;
+		border-right: 1px dashed $border-color;
 	}
+}
+
+// The rouge line-number table sits inside .highlight, which already carries the
+// code surface colour; keep its cells transparent so the zebra striping and
+// borders from the generic table rules don't leak in.
+table.rouge-table, table.rouge-table tr, table.rouge-table td {
+	background-color: transparent;
+	border: 0;
 }

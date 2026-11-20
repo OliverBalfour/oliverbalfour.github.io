@@ -10,13 +10,20 @@ $base-line-height: 1.5 !default;
 
 $spacing-unit:     30px !default;
 
-$text-color:       #111 !default;
-$background-color: #fdfdfd !default;
-$brand-color:      #2a7ae2 !default;
+// Dark palette. $grey-color-light is the "subtle divider/border" colour, so in
+// dark mode it is *darker* than the background rather than lighter.
+$text-color:       #dedbd6 !default;
+$background-color: #181a1b !default;
+$brand-color:      #79a8e0 !default;
 
-$grey-color:       #828282 !default;
-$grey-color-light: lighten($grey-color, 40%) !default;
-$grey-color-dark:  darken($grey-color, 25%) !default;
+$grey-color:       #8b9097 !default;
+$grey-color-light: #2b2e31 !default;
+$grey-color-dark:  #b4b9bf !default;
+
+// Slightly raised surfaces (inline code, code blocks, table headers).
+$surface-color:    #202325 !default;
+// Stronger rules, e.g. the bar across the top of the site header.
+$border-color:     #3a3f44 !default;
 
 $table-text-align: left !default;
 

@@ -4,7 +4,7 @@ description: >-
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://blog.oliverbalfour.com"
 permalink: /:year/:month/:day/:title.html
-title: Oliver's Blog
+title: "Oliver's Blog: Unmapped Territory"
 author: Oliver Balfour
 # email:
 
